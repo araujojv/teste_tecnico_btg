@@ -7,7 +7,7 @@ from decimal import Decimal
 from enum import Enum
 from typing import Any, Generic, TypeVar
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field, field_validator
 
 T = TypeVar("T")
 
@@ -41,8 +41,6 @@ class ValidationStatus(str, Enum):
 class FieldEvidence(BaseModel, Generic[T]):
     """Extracted value with auditable evidence (snippet + page + method)."""
 
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-
     value: T | None
     snippet: str | None = None
     page: int | None = None
@@ -53,15 +51,14 @@ class FieldEvidence(BaseModel, Generic[T]):
 class CorporateEventRecord(BaseModel):
     """Structured record for a corporate event notice."""
 
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-
     emissor: str | None = None
     cnpj: str | None = None
     isin: str | None = None
     ticker: str | None = None
 
     tipo_evento: EventType | None = None
-    tipo_declarado_no_titulo: EventType | None = None
+    # Free-text as printed on the title (may diverge from tipo_evento).
+    tipo_declarado_no_titulo: str | None = None
     divergencia_titulo_conteudo: bool = False
 
     data_aprovacao: date | None = None
@@ -72,10 +69,27 @@ class CorporateEventRecord(BaseModel):
 
     valor_bruto: Decimal | None = None
     valor_liquido: Decimal | None = None
+    # Fraction, not percentage: 0.175 means 17.5% IRRF (e.g. JCP).
     aliquota_ir: Decimal | None = None
-    moeda: str | None = "BRL"
+    # Ratio for bonificacao/grupamento (e.g. "1:10", "10%"), not a money amount.
+    proporcao: str | None = None
+    moeda: str | None = None
 
     evidencias: dict[str, FieldEvidence[Any]] = Field(default_factory=dict)
+
+    @field_validator("evidencias")
+    @classmethod
+    def evidencias_keys_must_be_model_fields(
+        cls, value: dict[str, FieldEvidence[Any]]
+    ) -> dict[str, FieldEvidence[Any]]:
+        allowed = set(cls.model_fields)
+        invalid = sorted(key for key in value if key not in allowed)
+        if invalid:
+            raise ValueError(
+                "evidencias keys must be CorporateEventRecord field names; "
+                f"invalid: {invalid}"
+            )
+        return value
 
 
 class ValidationResult(BaseModel):

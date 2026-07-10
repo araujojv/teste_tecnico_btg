@@ -18,7 +18,7 @@ def test_warning_titulo_dividendo_conteudo_jcp(
 def test_pass_aligned_types() -> None:
     record = CorporateEventRecord(
         tipo_evento=EventType.DIVIDENDO,
-        tipo_declarado_no_titulo=EventType.DIVIDENDO,
+        tipo_declarado_no_titulo="dividendo",
         divergencia_titulo_conteudo=False,
     )
     result = TypeConsistencyValidator().validate(record)
@@ -28,7 +28,7 @@ def test_pass_aligned_types() -> None:
 def test_warning_flag_even_if_types_match() -> None:
     record = CorporateEventRecord(
         tipo_evento=EventType.JCP,
-        tipo_declarado_no_titulo=EventType.JCP,
+        tipo_declarado_no_titulo="jcp",
         divergencia_titulo_conteudo=True,
     )
     result = TypeConsistencyValidator().validate(record)

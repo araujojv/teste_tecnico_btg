@@ -34,7 +34,7 @@ def known_issuer_record() -> CorporateEventRecord:
         isin="BRTIETACNOR3",
         ticker="TIET3",
         tipo_evento=EventType.DIVIDENDO,
-        tipo_declarado_no_titulo=EventType.DIVIDENDO,
+        tipo_declarado_no_titulo="dividendo",
         divergencia_titulo_conteudo=False,
         data_aprovacao=date(2024, 3, 1),
         data_com=date(2024, 3, 15),
@@ -56,7 +56,7 @@ def unknown_issuer_record() -> CorporateEventRecord:
         isin="BRCNHZACNOR5",
         ticker="CNHZ3",
         tipo_evento=EventType.DIVIDENDO,
-        tipo_declarado_no_titulo=EventType.DIVIDENDO,
+        tipo_declarado_no_titulo="dividendo",
     )
 
 
@@ -69,7 +69,7 @@ def jcp_doc03_record() -> CorporateEventRecord:
         isin="BRCSPRACNOR1",
         ticker="CSPR3",
         tipo_evento=EventType.JCP,
-        tipo_declarado_no_titulo=EventType.DIVIDENDO,
+        tipo_declarado_no_titulo="dividendo",
         divergencia_titulo_conteudo=True,
         data_aprovacao=date(2024, 1, 10),
         data_com=date(2024, 1, 20),
@@ -77,6 +77,7 @@ def jcp_doc03_record() -> CorporateEventRecord:
         data_pagamento=date(2024, 2, 15),
         valor_bruto=Decimal("0.09215"),
         valor_liquido=Decimal("0.07602375"),
+        # Fraction: 0.175 = 17.5% IRRF
         aliquota_ir=Decimal("0.175"),
         moeda="BRL",
     )

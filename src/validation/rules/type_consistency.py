@@ -6,6 +6,10 @@ from schemas.records import CorporateEventRecord, ValidationResult, ValidationSt
 from validation.base import Validator
 
 
+def _normalize_declared(declared: str) -> str:
+    return declared.strip().casefold()
+
+
 class TypeConsistencyValidator(Validator):
     """Title/content divergence -> warning (+ flag to lower confidence)."""
 
@@ -28,7 +32,7 @@ class TypeConsistencyValidator(Validator):
         types_differ = (
             declared is not None
             and inferred is not None
-            and declared != inferred
+            and _normalize_declared(declared) != inferred.value
         )
         if types_differ or divergencia:
             return ValidationResult(
@@ -40,9 +44,7 @@ class TypeConsistencyValidator(Validator):
                 ),
                 details={
                     "rebaixar_confianca": True,
-                    "tipo_declarado_no_titulo": (
-                        declared.value if declared else None
-                    ),
+                    "tipo_declarado_no_titulo": declared,
                     "tipo_evento": inferred.value if inferred else None,
                     "divergencia_titulo_conteudo": divergencia,
                 },
