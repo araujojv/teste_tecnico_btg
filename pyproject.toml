@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corporate-events-agent"
+version = "0.1.0"
+description = "Pipeline for corporate event notices (B3/CVM)"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2",
+    "openai",
+    "pdfplumber",
+    "pytest",
+    "python-dotenv",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
