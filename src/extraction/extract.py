@@ -145,6 +145,7 @@ def to_corporate_event_record(
     isin = llm_out.isin.value.strip().upper() if llm_out.isin.value else None
     ticker = llm_out.ticker.value.strip().upper() if llm_out.ticker.value else None
     tipo_evento = parse_event_type(llm_out.tipo_evento.value)
+    tipo_declarado_no_titulo = llm_out.tipo_declarado_no_titulo.value
     data_aprovacao = parse_brazilian_date(llm_out.data_aprovacao.value)
     data_com = parse_brazilian_date(llm_out.data_com.value)
     data_ex = parse_brazilian_date(llm_out.data_ex.value)
@@ -162,6 +163,7 @@ def to_corporate_event_record(
         ("isin", llm_out.isin, isin),
         ("ticker", llm_out.ticker, ticker),
         ("tipo_evento", llm_out.tipo_evento, tipo_evento),
+        ("tipo_declarado_no_titulo", llm_out.tipo_declarado_no_titulo, tipo_declarado_no_titulo),
         ("data_aprovacao", llm_out.data_aprovacao, data_aprovacao),
         ("data_com", llm_out.data_com, data_com),
         ("data_ex", llm_out.data_ex, data_ex),
@@ -183,6 +185,7 @@ def to_corporate_event_record(
         isin=isin,
         ticker=ticker,
         tipo_evento=tipo_evento,
+        tipo_declarado_no_titulo=tipo_declarado_no_titulo,
         data_aprovacao=data_aprovacao,
         data_com=data_com,
         data_ex=data_ex,
@@ -231,6 +234,7 @@ def extract_native(
             "isin",
             "ticker",
             "tipo_evento",
+            "tipo_declarado_no_titulo",
             "data_aprovacao",
             "data_com",
             "data_ex",

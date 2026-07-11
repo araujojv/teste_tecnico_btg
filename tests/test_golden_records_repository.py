@@ -42,6 +42,21 @@ def test_find_by_nome_fuzzy(repository: GoldenRecordsRepository) -> None:
     assert match.record.ticker == "TIET3"
 
 
+def test_emissor_match_case_and_accents(repository: GoldenRecordsRepository) -> None:
+    """Literal ALL-CAPS from PDF must match title-case golden emissor."""
+    # ENERGETICA VALE DO TIETE S.A. with accents (as extracted from doc 01)
+    extracted = "ENERG\u00c9TICA VALE DO TIET\u00ca S.A."
+    golden = "Energ\u00e9tica Vale do Tiet\u00ea S.A."
+    match = repository.find_by_nome_fuzzy(extracted)
+    assert match is not None
+    assert match.record.ticker == "TIET3"
+    assert match.score == 1.0
+    # Sanity: normalized forms are equal
+    from repositories.golden_records import normalize_text
+
+    assert normalize_text(extracted) == normalize_text(golden)
+
+
 def test_match_precedence_isin_over_ticker(
     repository: GoldenRecordsRepository,
 ) -> None:

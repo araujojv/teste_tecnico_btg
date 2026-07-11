@@ -24,6 +24,8 @@ class ExtractionLLMOutput(BaseModel):
     ticker: ExtractedField = Field(default_factory=ExtractedField)
     # One of: dividendo | jcp | bonificacao | grupamento (or null).
     tipo_evento: ExtractedField = Field(default_factory=ExtractedField)
+    # Literal wording from title/header (not normalized enum).
+    tipo_declarado_no_titulo: ExtractedField = Field(default_factory=ExtractedField)
 
     data_aprovacao: ExtractedField = Field(default_factory=ExtractedField)
     data_com: ExtractedField = Field(default_factory=ExtractedField)

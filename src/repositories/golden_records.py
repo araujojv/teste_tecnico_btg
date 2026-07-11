@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import re
+import unicodedata
 from difflib import SequenceMatcher
 from enum import Enum
 from pathlib import Path
@@ -42,9 +43,18 @@ def normalize_cnpj(cnpj: str | None) -> str | None:
 
 
 def normalize_text(text: str | None) -> str | None:
+    """Casefold + strip/collapse spaces + accent-insensitive (NFKD)."""
     if text is None:
         return None
-    cleaned = re.sub(r"\s+", " ", text.strip().casefold())
+    stripped = text.strip()
+    if not stripped:
+        return None
+    # NFKD then drop combining marks so accented letters match base letters.
+    decomposed = unicodedata.normalize("NFKD", stripped)
+    without_accents = "".join(
+        ch for ch in decomposed if not unicodedata.combining(ch)
+    )
+    cleaned = re.sub(r"\s+", " ", without_accents.casefold())
     return cleaned or None
 
 
