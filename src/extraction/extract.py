@@ -124,20 +124,26 @@ def _evidence_for(
     *,
     typed_value: Any,
     page_texts: list[str],
+    method: ExtractionMethod = ExtractionMethod.NATIVE,
 ) -> FieldEvidence[Any] | None:
     if typed_value is None and (field.value is None or field.value.strip() == ""):
         return None
+    page = field.page
+    if page is None:
+        page = find_page(field.snippet, page_texts)
     return FieldEvidence(
         value=typed_value if typed_value is not None else field.value,
         snippet=field.snippet,
-        page=find_page(field.snippet, page_texts),
-        method=ExtractionMethod.NATIVE,
+        page=page,
+        method=method,
     )
 
 
 def to_corporate_event_record(
     llm_out: ExtractionLLMOutput,
     page_texts: list[str],
+    *,
+    method: ExtractionMethod = ExtractionMethod.NATIVE,
 ) -> CorporateEventRecord:
     """Map LLM output to CorporateEventRecord with FieldEvidence + page."""
     emissor = llm_out.emissor.value
@@ -175,7 +181,12 @@ def to_corporate_event_record(
         ("moeda", llm_out.moeda, moeda),
     ]
     for name, field, typed in mapping:
-        ev = _evidence_for(field, typed_value=typed, page_texts=page_texts)
+        ev = _evidence_for(
+            field,
+            typed_value=typed,
+            page_texts=page_texts,
+            method=method,
+        )
         if ev is not None:
             evidencias[name] = ev
 
@@ -198,6 +209,31 @@ def to_corporate_event_record(
         moeda=moeda,
         evidencias=evidencias,
     )
+
+
+def filled_field_names(record: CorporateEventRecord) -> list[str]:
+    """Names of non-null scalar fields on the record (for audit)."""
+    return [
+        name
+        for name in (
+            "emissor",
+            "cnpj",
+            "isin",
+            "ticker",
+            "tipo_evento",
+            "tipo_declarado_no_titulo",
+            "data_aprovacao",
+            "data_com",
+            "data_ex",
+            "data_pagamento",
+            "valor_bruto",
+            "valor_liquido",
+            "aliquota_ir",
+            "proporcao",
+            "moeda",
+        )
+        if getattr(record, name) is not None
+    ]
 
 
 def extract_native(
@@ -225,28 +261,12 @@ def extract_native(
         ExtractionLLMOutput,
         model=cfg.extraction_model,
     )
-    record = to_corporate_event_record(llm_out, state.page_texts)
-    filled = [
-        name
-        for name in (
-            "emissor",
-            "cnpj",
-            "isin",
-            "ticker",
-            "tipo_evento",
-            "tipo_declarado_no_titulo",
-            "data_aprovacao",
-            "data_com",
-            "data_ex",
-            "data_pagamento",
-            "valor_bruto",
-            "valor_liquido",
-            "aliquota_ir",
-            "proporcao",
-            "moeda",
-        )
-        if getattr(record, name) is not None
-    ]
+    record = to_corporate_event_record(
+        llm_out,
+        state.page_texts,
+        method=ExtractionMethod.NATIVE,
+    )
+    filled = filled_field_names(record)
     updated = state.model_copy(update={"record": record})
     return append_audit(
         updated,

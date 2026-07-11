@@ -6,10 +6,10 @@ from pathlib import Path
 
 from classification.classifier import get_event_classifier
 from config.settings import Settings, get_settings
-from extraction.extract import extract_native
+from extraction.factory import extract_fields
 from extraction.ingest import ingest_pdf
 from llm.openai_provider import get_llm_provider
-from pipeline.state import DocumentState, PdfKind
+from pipeline.state import DocumentState
 from pipeline.steps.route import route
 from pipeline.steps.score import score
 from pipeline.steps.validate import validate
@@ -33,14 +33,10 @@ def run_pipeline(
     if skip_llm:
         return state
 
-    if state.pdf_kind == PdfKind.NATIVE:
-        provider = get_llm_provider(cfg)
-        state = extract_native(state, provider=provider, settings=cfg)
-        classifier = get_event_classifier(settings=cfg, provider=provider)
-        state = classifier.classify(state)
-    else:
-        # Multimodal extraction is step 6; still allow validate/score/route if record set.
-        pass
+    provider = get_llm_provider(cfg)
+    state = extract_fields(state, provider=provider, settings=cfg)
+    classifier = get_event_classifier(settings=cfg, provider=provider)
+    state = classifier.classify(state)
 
     state = validate(state, repository=repository)
     state = score(state)

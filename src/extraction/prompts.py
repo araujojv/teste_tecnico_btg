@@ -41,3 +41,44 @@ def build_extraction_user_prompt(page_texts: list[str]) -> str:
         parts.append(text if text.strip() else "(no extractable text)")
         parts.append("")
     return "\n".join(parts).rstrip() + "\n"
+
+
+# OCR/vision extras on top of EXTRACTION_SYSTEM (scanned PDFs only - ADR multimodal cost).
+EXTRACTION_OCR_SYSTEM_EXTRA = """\
+Additional rules for scanned page images:
+- Read the text FROM THE IMAGES (OCR). Do not invent text that is not visible.
+- For each non-null value, snippet must be a short literal transcription from the image.
+- For each non-null field, set page to the 1-based page index of the image that contains the evidence.
+"""
+
+
+def build_extraction_vision_user_content(
+    page_images_base64: list[str],
+) -> list[dict]:
+    """
+    Multimodal user content: instruction text + one PNG image part per page.
+    OpenAI content-part format (compatible with chat.completions.parse).
+    """
+    content: list[dict] = [
+        {
+            "type": "text",
+            "text": (
+                "Extract all corporate-event fields from the following scanned "
+                "document page images. Each image is labeled PAGE N (1-based). "
+                "Return structured output matching the schema. "
+                "Set page on every non-null field to the matching PAGE index. "
+                "Snippets must be literal transcriptions from the images."
+            ),
+        }
+    ]
+    for index, image_b64 in enumerate(page_images_base64, start=1):
+        content.append({"type": "text", "text": f"--- PAGE {index} ---"})
+        content.append(
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{image_b64}",
+                },
+            }
+        )
+    return content

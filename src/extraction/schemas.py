@@ -10,6 +10,8 @@ class ExtractedField(BaseModel):
 
     value: str | None = None
     snippet: str | None = None
+    # 1-based page index (OCR/vision fills this; native may leave null and use find_page).
+    page: int | None = None
 
 
 class ExtractionLLMOutput(BaseModel):

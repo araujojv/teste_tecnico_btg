@@ -53,3 +53,32 @@ def build_classification_user_prompt(page_texts: list[str]) -> str:
         parts.append(text if text.strip() else "(no extractable text)")
         parts.append("")
     return "\n".join(parts).rstrip() + "\n"
+
+
+def build_classification_vision_user_content(
+    page_images_base64: list[str],
+) -> list[dict]:
+    """Multimodal classification content from scanned page images."""
+    content: list[dict] = [
+        {
+            "type": "text",
+            "text": (
+                "Classify the corporate-event type from the following scanned "
+                "document page images. Each image is labeled PAGE N (1-based). "
+                "Follow the schema field order: evidence -> reasoning -> title "
+                "type -> content type -> divergence flag. "
+                "Quote evidence as literal transcriptions from the images."
+            ),
+        }
+    ]
+    for index, image_b64 in enumerate(page_images_base64, start=1):
+        content.append({"type": "text", "text": f"--- PAGE {index} ---"})
+        content.append(
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{image_b64}",
+                },
+            }
+        )
+    return content
