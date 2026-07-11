@@ -21,3 +21,7 @@ where = ["src"]
 [tool.pytest.ini_options]
 pythonpath = ["src", "."]
 testpaths = ["tests"]
+addopts = "-m 'not llm'"
+markers = [
+    "llm: calls OpenAI API (needs OPENAI_API_KEY); excluded from default run",
+]

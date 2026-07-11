@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
+_DEFAULT_MODEL = "gpt-5.4-mini"
 
 
 def _resolve_path(raw: str) -> Path:
@@ -26,6 +27,10 @@ class Settings:
     # Mean chars/page below this => scanned (doc 01 ~1378, doc 07 ~0).
     text_density_threshold: float
     scan_image_resolution: int
+    # LLM models - never hardcode in providers (AGENTS.md Modelos LLM).
+    extraction_model: str
+    classification_model: str
+    vision_model: str
 
     def __init__(self) -> None:
         self.openai_api_key = os.getenv("OPENAI_API_KEY", "")
@@ -44,6 +49,11 @@ class Settings:
         self.scan_image_resolution = int(
             os.getenv("SCAN_IMAGE_RESOLUTION", "150")
         )
+        self.extraction_model = os.getenv("EXTRACTION_MODEL", _DEFAULT_MODEL)
+        self.classification_model = os.getenv(
+            "CLASSIFICATION_MODEL", _DEFAULT_MODEL
+        )
+        self.vision_model = os.getenv("VISION_MODEL", _DEFAULT_MODEL)
 
 
 def get_settings() -> Settings:
