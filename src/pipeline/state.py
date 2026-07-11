@@ -7,6 +7,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
+from confidence.models import FieldConfidence
 from schemas.records import CorporateEventRecord, ValidationResult
 
 
@@ -44,7 +45,7 @@ class DocumentState(BaseModel):
 
     # Confidence
     overall_confidence: float | None = None
-    field_confidences: dict[str, str] = Field(default_factory=dict)
+    field_confidences: dict[str, FieldConfidence] = Field(default_factory=dict)
 
     # Routing
     route_decision: RouteDecision | None = None
