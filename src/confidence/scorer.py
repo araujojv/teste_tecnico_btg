@@ -122,7 +122,7 @@ def score_field(
     signals = [method_signal]
 
     if record is not None and getattr(record, field, None) is None:
-        # Absent fields are not "low confidence extractions" ù mark medium/neutral.
+        # Absent optional fields: cap score at medium/neutral.
         if field in ("valor_liquido", "aliquota_ir", "proporcao", "cnpj"):
             score = min(score, 0.7)
             signals.append("field_absent (cap 0.70)")
