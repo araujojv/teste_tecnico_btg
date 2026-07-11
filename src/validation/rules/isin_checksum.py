@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from repositories.golden_records import GoldenRecordsRepository
 from schemas.records import CorporateEventRecord, ValidationResult, ValidationStatus
 from validation.base import Validator
 
@@ -46,6 +47,14 @@ def is_valid_isin(isin: str) -> bool:
 
 
 class IsinChecksumValidator(Validator):
+    """
+    Invalid checksum is FAIL unless the ISIN has an exact match in golden_records,
+    in which case it is WARNING (synthetic/reference ISINs may fail ISO 6166).
+    """
+
+    def __init__(self, repository: GoldenRecordsRepository | None = None) -> None:
+        self._repository = repository
+
     @property
     def name(self) -> str:
         return "isin_checksum"
@@ -74,6 +83,26 @@ class IsinChecksumValidator(Validator):
             )
 
         expected = isin_check_digit(isin)
+        in_golden = (
+            self._repository is not None
+            and self._repository.find_by_isin(isin) is not None
+        )
+        if in_golden:
+            return ValidationResult(
+                rule=self.name,
+                status=ValidationStatus.WARNING,
+                message=(
+                    f"ISIN checksum invalid ({isin}: digit={isin[11]}, "
+                    f"expected={expected}), but ISIN confirmed in golden_records "
+                    "reference base."
+                ),
+                details={
+                    "isin": isin,
+                    "expected_check_digit": expected,
+                    "confirmed_in_golden_records": True,
+                },
+            )
+
         return ValidationResult(
             rule=self.name,
             status=ValidationStatus.FAIL,
@@ -81,5 +110,9 @@ class IsinChecksumValidator(Validator):
                 f"Invalid ISIN checksum: {isin} "
                 f"(digit={isin[11]}, expected={expected})."
             ),
-            details={"isin": isin, "expected_check_digit": expected},
+            details={
+                "isin": isin,
+                "expected_check_digit": expected,
+                "confirmed_in_golden_records": False,
+            },
         )

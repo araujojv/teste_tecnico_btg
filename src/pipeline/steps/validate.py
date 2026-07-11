@@ -22,7 +22,7 @@ def build_default_validators(
         GoldenRecordsValidator(repo),
         DateCoherenceValidator(),
         GrossNetConsistencyValidator(),
-        IsinChecksumValidator(),
+        IsinChecksumValidator(repo),
         TypeConsistencyValidator(),
     ]
 

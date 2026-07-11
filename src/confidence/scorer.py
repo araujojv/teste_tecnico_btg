@@ -73,6 +73,10 @@ def _validator_adjustments(
     delta = 0.0
     signals: list[str] = []
     relevant = _FIELD_VALIDATORS.get(field, set())
+    golden_pass = any(
+        r.rule == "golden_records" and r.status == ValidationStatus.PASS
+        for r in results
+    )
     for result in results:
         if result.rule not in relevant:
             continue
@@ -80,8 +84,22 @@ def _validator_adjustments(
             delta += 0.05
             signals.append(f"validator:{result.rule}=pass (+0.05)")
         elif result.status == ValidationStatus.WARNING:
-            delta -= 0.2
-            signals.append(f"validator:{result.rule}=warning (-0.20)")
+            # Fictional ISINs in golden: checksum warning must not drag isin to low.
+            confirmed = bool(
+                result.details and result.details.get("confirmed_in_golden_records")
+            )
+            if (
+                field == "isin"
+                and result.rule == "isin_checksum"
+                and (confirmed or golden_pass)
+            ):
+                signals.append(
+                    f"validator:{result.rule}=warning "
+                    "(golden confirmed, no penalty)"
+                )
+            else:
+                delta -= 0.2
+                signals.append(f"validator:{result.rule}=warning (-0.20)")
         elif result.status == ValidationStatus.FAIL:
             delta -= 0.45
             signals.append(f"validator:{result.rule}=fail (-0.45)")
