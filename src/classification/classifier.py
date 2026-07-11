@@ -61,6 +61,7 @@ class LLMEventClassifier(EventClassifier):
                 "tipo_evento": result.tipo_evento,
                 "tipo_declarado_no_titulo": result.tipo_declarado_no_titulo,
                 "divergencia_titulo_conteudo": result.divergencia_titulo_conteudo,
+                "raciocinio_classificacao": result.raciocinio,
             }
         )
 

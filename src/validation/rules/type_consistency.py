@@ -1,4 +1,4 @@
-"""Validator: consistency between title-declared type and inferred type."""
+"""Validator: title/content type consistency via classifier flag only."""
 
 from __future__ import annotations
 
@@ -6,56 +6,44 @@ from schemas.records import CorporateEventRecord, ValidationResult, ValidationSt
 from validation.base import Validator
 
 
-def _normalize_declared(declared: str) -> str:
-    return declared.strip().casefold()
-
-
-def _title_matches_inferred(declared: str, inferred_value: str) -> bool:
-    """True if title wording matches inferred enum (exact or contains keyword)."""
-    norm = _normalize_declared(declared)
-    if norm == inferred_value:
-        return True
-    # e.g. "Pagamento de Dividendos" contains "dividendo"
-    return inferred_value in norm
-
-
 class TypeConsistencyValidator(Validator):
-    """Title/content divergence -> warning (+ flag to lower confidence)."""
+    """
+    Relies on divergencia_titulo_conteudo from the classifier (which read the doc).
+    Does not compare tipo_declarado_no_titulo vs tipo_evento strings.
+    """
 
     @property
     def name(self) -> str:
         return "type_consistency"
 
     def validate(self, record: CorporateEventRecord) -> ValidationResult:
-        declared = record.tipo_declarado_no_titulo
-        inferred = record.tipo_evento
         divergencia = record.divergencia_titulo_conteudo
 
-        if declared is None and inferred is None:
+        # Classification has not run yet.
+        if divergencia is None:
             return ValidationResult(
                 rule=self.name,
-                status=ValidationStatus.WARNING,
-                message="tipo_evento and tipo_declarado_no_titulo are missing.",
+                status=ValidationStatus.NOT_APPLICABLE,
+                message="Classification not run; divergencia_titulo_conteudo is unset.",
             )
 
-        types_differ = (
-            declared is not None
-            and inferred is not None
-            and not _title_matches_inferred(declared, inferred.value)
-        )
-        if types_differ or divergencia:
+        if divergencia:
+            raciocinio = record.raciocinio_classificacao or "(raciocinio ausente)"
             return ValidationResult(
                 rule=self.name,
                 status=ValidationStatus.WARNING,
                 message=(
-                    f"Title/content divergence: declared={declared}, "
-                    f"inferred={inferred}, flag={divergencia}."
+                    "Title/content divergence flagged by classifier. "
+                    f"Raciocinio: {raciocinio}"
                 ),
                 details={
                     "rebaixar_confianca": True,
-                    "tipo_declarado_no_titulo": declared,
-                    "tipo_evento": inferred.value if inferred else None,
-                    "divergencia_titulo_conteudo": divergencia,
+                    "tipo_declarado_no_titulo": record.tipo_declarado_no_titulo,
+                    "tipo_evento": (
+                        record.tipo_evento.value if record.tipo_evento else None
+                    ),
+                    "divergencia_titulo_conteudo": True,
+                    "raciocinio": raciocinio,
                 },
             )
 
@@ -63,6 +51,8 @@ class TypeConsistencyValidator(Validator):
             rule=self.name,
             status=ValidationStatus.PASS,
             message=(
-                f"Type consistent: declared={declared}, inferred={inferred}."
+                "No title/content divergence "
+                f"(tipo_declarado_no_titulo={record.tipo_declarado_no_titulo}, "
+                f"tipo_evento={record.tipo_evento})."
             ),
         )

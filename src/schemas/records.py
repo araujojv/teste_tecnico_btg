@@ -59,7 +59,10 @@ class CorporateEventRecord(BaseModel):
     tipo_evento: EventType | None = None
     # Free-text as printed on the title (may diverge from tipo_evento).
     tipo_declarado_no_titulo: str | None = None
-    divergencia_titulo_conteudo: bool = False
+    # None = classification not run yet; True/False set by classifier.
+    divergencia_titulo_conteudo: bool | None = None
+    # Classifier reasoning (for type_consistency WARNING message).
+    raciocinio_classificacao: str | None = None
 
     data_aprovacao: date | None = None
     data_com: date | None = None

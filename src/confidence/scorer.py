@@ -131,7 +131,7 @@ def score_field(
     score += delta
     signals.extend(val_signals)
 
-    if field == "tipo_evento" and record is not None and record.divergencia_titulo_conteudo:
+    if field == "tipo_evento" and record is not None and record.divergencia_titulo_conteudo is True:
         score -= 0.25
         signals.append("divergencia_titulo_conteudo=true (-0.25)")
 
