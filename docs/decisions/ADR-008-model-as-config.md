@@ -1,4 +1,4 @@
-# ADR-008 - Modelo LLM como configuracao (tres knobs)
+# ADR-008 - Modelo LLM como configuração (três knobs)
 
 ## Status
 
@@ -6,26 +6,26 @@ Accepted
 
 ## Contexto
 
-Extracao de texto, classificacao e visao podem precisar de tiers diferentes.
-Hardcodar o modelo no provider impede troca sem alterar codigo e mistura
+Extração de texto, classificação e visão podem precisar de tiers diferentes.
+Hardcodar o modelo no provider impede troca sem alterar código e mistura
 responsabilidades.
 
-## Decisao
+## Decisão
 
-Tres variaveis em `.env` / `config/settings.py`, nunca literais no codigo
+Três variáveis em `.env` / `config/settings.py`, nunca literais no código
 de chamada:
 
 | Knob | Env | Uso |
 |------|-----|-----|
 | EXTRACTION_MODEL | EXTRACTION_MODEL | PDF nativo (texto) |
-| CLASSIFICATION_MODEL | CLASSIFICATION_MODEL | Classificacao com texto |
-| VISION_MODEL | VISION_MODEL | Extracao OCR + classificacao scanned |
+| CLASSIFICATION_MODEL | CLASSIFICATION_MODEL | Classificação com texto |
+| VISION_MODEL | VISION_MODEL | Extração OCR + classificação scanned |
 
-Default dos tres: `gpt-5.4-mini`. Subir de tier so se o lote provar erro
-sistematico (custo vs qualidade).
+Default dos três: `gpt-5.4-mini`. Subir de tier só se o lote provar erro
+sistemático (custo vs qualidade).
 
-## Consequencias
+## Consequências
 
 - Mesmo adapter `OpenAIProvider.parse(messages, model=...)`.
-- `.env.example` documenta os knobs; `.env` nao vai para o git.
-- Avaliacao A/B de modelo nao exige branch de codigo.
+- `.env.example` documenta os knobs; `.env` não vai para o git.
+- Avaliação A/B de modelo não exige branch de código.

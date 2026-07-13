@@ -1,4 +1,4 @@
-# ADR-003 - Structured outputs strict e schema intermediario
+# ADR-003 - Structured outputs strict e schema intermediário
 
 ## Status
 
@@ -6,23 +6,23 @@ Accepted
 
 ## Contexto
 
-Extracao e classificacao precisam de JSON estavel para mapear para
+Extração e classificação precisam de JSON estável para mapear para
 `CorporateEventRecord` (Decimal, date, enums). Respostas livres da LLM
 quebram o pipeline e a auditoria.
 
-## Decisao
+## Decisão
 
 - Usar `client.beta.chat.completions.parse()` com modelo Pydantic e schema
   strict (`response_format` / structured outputs).
-- Schema intermediario de extracao (`ExtractionLLMOutput` / `ExtractedField`)
+- Schema intermediário de extração (`ExtractionLLMOutput` / `ExtractedField`)
   com valores como string; o mapper em `extract.py` converte para
   `date` / `Decimal` / `EventType`.
-- Classificacao com schema autoregressivo: evidencias -> raciocinio ->
-  titulo -> tipo_evento -> divergencia (AGENTS.md).
+- Classificação com schema autoregressivo: evidências -> raciocínio ->
+  título -> tipo_evento -> divergência (AGENTS.md).
 
-## Consequencias
+## Consequências
 
 - Falhas de parse falham cedo (melhor que inventar campos).
-- Prompt e schema ficam alinhados; mudancas de contrato exigem atualizar
+- Prompt e schema ficam alinhados; mudanças de contrato exigem atualizar
   Pydantic + testes.
-- Nao validar com LLM o que o codigo valida depois.
+- Não validar com LLM o que o código valida depois.

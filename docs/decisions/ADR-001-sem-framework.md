@@ -6,24 +6,24 @@ Accepted
 
 ## Contexto
 
-O fluxo e um DAG linear com dois ramos (PDF nativo vs escaneado). Frameworks
-como LangGraph/LangChain adicionam abstracao, dependencia e superficie de
+O fluxo é um DAG linear com dois ramos (PDF nativo vs escaneado). Frameworks
+como LangGraph/LangChain adicionam abstração, dependência e superfície de
 debug para um `if` sobre `pdf_kind`.
 
-Ha sessao tecnica ao vivo (45 min) para estender e depurar o codigo: legibilidade
-e previsibilidade importam mais que orquestracao generica.
+Há sessão técnica ao vivo (45 min) para estender e depurar o código: legibilidade
+e previsibilidade importam mais que orquestração genérica.
 
-## Decisao
+## Decisão
 
 - Python 3.11+, Pydantic v2, SDK OpenAI direto.
-- Cada etapa e uma funcao pura `(DocumentState) -> DocumentState`.
+- Cada etapa é uma função pura `(DocumentState) -> DocumentState`.
 - Orquestrador simples em `src/pipeline/orchestrator.py` encadeia ingest ->
   extract -> classify -> validate -> score -> route.
 - Sem LangGraph, LangChain ou frameworks de agente.
 
-## Consequencias
+## Consequências
 
-- Troca de provider fica atras de `LLMProvider` (ADR relacionado ao adapter).
-- Extensoes na sessao ao vivo sao locais (um step, um validador), sem grafo.
-- Custo cognitivo menor; trade-off: nao ha runtime de agente out-of-the-box
-  (checkpoints, retries de grafo) � e intencional.
+- Troca de provider fica atrás de `LLMProvider` (ADR relacionado ao adapter).
+- Extensões na sessão ao vivo são locais (um step, um validador), sem grafo.
+- Custo cognitivo menor; trade-off: não há runtime de agente out-of-the-box
+  (checkpoints, retries de grafo) - é intencional.
