@@ -15,6 +15,7 @@ from schemas.records import ConfidenceLevel, EventType, ExtractionMethod
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DOC_01 = PROJECT_ROOT / "documents" / "01_energetica_vale_tiete_dividendo.pdf"
+DOC_05 = PROJECT_ROOT / "documents" / "05_aurora_saneamento_dividendo_datas.pdf"
 DOC_07 = PROJECT_ROOT / "documents" / "07_telecom_norte_jcp_SCAN.pdf"
 DOC_08 = PROJECT_ROOT / "documents" / "08_construtora_horizonte_bonificacao.pdf"
 
@@ -40,6 +41,20 @@ def test_pipeline_doc01_auto_approve() -> None:
     assert state.route_decision == "auto_approve"
     golden = next(r for r in state.validation_results if r.rule == "golden_records")
     assert golden.status.value == "pass"
+
+
+@pytest.mark.llm
+def test_pipeline_doc05_human_review_date_coherence() -> None:
+    """Doc 05: incoherent dates in PDF -> date_coherence fail -> human_review."""
+    state = _run(DOC_05)
+    assert state.record is not None
+    assert state.record.data_pagamento is not None
+    assert state.record.data_com is not None
+    assert state.record.data_pagamento < state.record.data_com
+    dates = next(r for r in state.validation_results if r.rule == "date_coherence")
+    assert dates.status.value == "fail"
+    assert state.route_decision == "human_review"
+    assert any("date_coherence" in reason for reason in state.route_reasons)
 
 
 @pytest.mark.llm

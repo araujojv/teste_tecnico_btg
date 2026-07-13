@@ -45,3 +45,16 @@ def test_fail_pagamento_before_ex() -> None:
     )
     result = DateCoherenceValidator().validate(record)
     assert result.status == ValidationStatus.FAIL
+
+
+def test_fail_doc05_pagamento_before_com_and_ex() -> None:
+    """Doc 05 Aurora: payment 10/07 before data_com 15/07 and data_ex 16/07."""
+    record = CorporateEventRecord(
+        data_aprovacao=date(2026, 6, 1),
+        data_com=date(2026, 7, 15),
+        data_ex=date(2026, 7, 16),
+        data_pagamento=date(2026, 7, 10),
+    )
+    result = DateCoherenceValidator().validate(record)
+    assert result.status == ValidationStatus.FAIL
+    assert "data_pagamento" in result.message or "2026-07-10" in result.message

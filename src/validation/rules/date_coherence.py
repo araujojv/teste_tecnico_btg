@@ -1,4 +1,4 @@
-"""Validator: temporal coherence of event dates."""
+"""Validator: temporal coherence of event dates (ADR-002)."""
 
 from __future__ import annotations
 
@@ -7,7 +7,10 @@ from validation.base import Validator
 
 
 class DateCoherenceValidator(Validator):
-    """aprovacao <= data_com < data_ex <= pagamento; declared absence = warning."""
+    """aprovacao <= data_com < data_ex <= pagamento; declared absence = warning.
+
+    ADR-002: deterministic rule; doc 05 trap (pagamento before com/ex) -> fail.
+    """
 
     @property
     def name(self) -> str:

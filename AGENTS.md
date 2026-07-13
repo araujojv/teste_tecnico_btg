@@ -22,9 +22,10 @@ Haverá sessão técnica ao vivo (45 min) para estender e depurar o código — 
 
 | Doc | Armadilha | Comportamento esperado |
 |---|---|---|
-| 01, 02, 05, 06 | Nenhuma | Extração limpa → auto_approve |
+| 01, 02, 06 | Nenhuma | Extração limpa → auto_approve |
 | 03 | Título diz "Dividendos", conteúdo descreve JCP (limitado à TJLP, IRRF 17,5%, imputado ao dividendo obrigatório — art. 9º Lei 9.249/95) | `tipo_evento = jcp`, warning de divergência título/conteúdo → human_review |
 | 04 | Data de pagamento "será oportunamente definida" (ausência declarada no doc) | Campo `null` + flag de ausência declarada → **warning, não fail** |
+| 05 | Datas incoerentes no próprio aviso: `data_pagamento` 10/07/2026 anterior a `data_com` 15/07/2026 e `data_ex` 16/07/2026 | `date_coherence` = fail → human_review |
 | 07 | PDF escaneado (sem texto extraível) | Rota multimodal; teto de confiança menor para campos via OCR |
 | 08 | Emissor (Construtora Horizonte, CNHZ3, ISIN BRCNHZACNOR5) **não existe** no golden_records.csv | Validação `fail` → human_review obrigatório |
 
@@ -35,7 +36,7 @@ Sanity check matemático do doc 03: `0,09215 × (1 − 0,175) = 0,07602375` = va
 Cada validador implementa `Validator.validate(record) -> ValidationResult` com status `pass | fail | warning | not_applicable`:
 
 1. `golden_records` — match por ISIN, ticker, CNPJ e nome (fuzzy) via `GoldenRecordsRepository` (Repository pattern, impl CSV)
-2. `date_coherence` — `aprovacao ≤ data_com < data_ex ≤ pagamento`; data ausente declarada = warning
+2. `date_coherence` — `aprovacao ≤ data_com < data_ex ≤ pagamento`; data ausente declarada = warning (ADR-002)
 3. `gross_net_consistency` — `bruto × (1 − aliquota) ≈ liquido` (tolerância de arredondamento); `not_applicable` para grupamento/bonificação
 4. `isin_checksum` — validação determinística do dígito verificador
 5. `type_consistency` — declarado vs inferido; divergência = warning + rebaixa confiança
@@ -102,6 +103,13 @@ corporate-events-agent/
 - Datas: `datetime.date`, parse explícito do formato brasileiro (dd/mm/yyyy e datas por extenso)
 - Sem dependência nova sem justificar em ADR
 - Todo comportamento não-óbvio referencia o ADR correspondente em comentário
+
+
+## Modelos LLM (decisão travada)
+- Modelo é SEMPRE configuração via settings/.env, nunca hardcoded.
+- Três knobs independentes: EXTRACTION_MODEL, CLASSIFICATION_MODEL, VISION_MODEL.
+- Default dos três: gpt-5.4-mini (tier mini; sobe de tier apenas se o lote provar erro — ADR).
+- Structured outputs via client.beta.chat.completions.parse() com o modelo Pydantic direto (strict).
 
 ## O que NUNCA fazer
 
