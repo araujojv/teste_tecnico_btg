@@ -1,0 +1,335 @@
+{
+  "doc_id": "04_rede_varejo_jcp_sem_data",
+  "processing": {
+    "timestamp": "2026-07-11T16:55:21.721903+00:00",
+    "pipeline_version": "0.1.0",
+    "source_path": "C:\\teste_tecnico\\documents\\04_rede_varejo_jcp_sem_data.pdf",
+    "pdf_kind": "native",
+    "extraction_method": "native",
+    "models": {
+      "extraction": "gpt-5.4-mini",
+      "classification": "gpt-5.4-mini",
+      "vision": "gpt-5.4-mini"
+    },
+    "overall_confidence": 0.8571428571428571
+  },
+  "record": {
+    "emissor": {
+      "value": "REDE VAREJO BRASIL S.A.",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "emissor: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "REDE VAREJO BRASIL S.A.",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "cnpj": {
+      "value": "08.777.666/0001-33",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "cnpj: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "CNPJ/ME nº 08.777.666/0001-33",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "isin": {
+      "value": "BRRVBRACNOR9",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "isin: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05); validator:isin_checksum=warning (golden confirmed, no penalty)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)",
+          "validator:isin_checksum=warning (golden confirmed, no penalty)"
+        ]
+      },
+      "evidence": {
+        "snippet": "ISIN BRRVBRACNOR9",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "ticker": {
+      "value": "RVBR3",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "ticker: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Código de negociação RVBR3",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_evento": {
+      "value": "jcp",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "tipo_evento: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:type_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:type_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Juros sobre o Capital Próprio (JCP)",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_declarado_no_titulo": {
+      "value": "Juros sobre o Capital Próprio",
+      "confidence": null,
+      "evidence": {
+        "snippet": "AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "divergencia_titulo_conteudo": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "raciocinio_classificacao": {
+      "value": "O documento descreve expressamente o pagamento de Juros sobre o Capital Próprio, com menção a JCP e retenção de IRRF de 17,5% sobre o valor bruto, que são sinais típicos desse tipo de provento. Não há indicação de bonificação ou grupamento, nem de mera distribuição de dividendos sem retenção.",
+      "confidence": null,
+      "evidence": null
+    },
+    "data_aprovacao": {
+      "value": "2026-06-09",
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "data_aprovacao: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); validator:date_coherence=warning (-0.20)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=warning (-0.20)"
+        ]
+      },
+      "evidence": {
+        "snippet": "reunião realizada em 09 de junho de 2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_com": {
+      "value": "2026-06-23",
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "data_com: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); validator:date_coherence=warning (-0.20)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=warning (-0.20)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data-base (“data com”) 23/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_ex": {
+      "value": "2026-06-24",
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "data_ex: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); validator:date_coherence=warning (-0.20)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=warning (-0.20)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data “ex-JCP” 24/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_pagamento": {
+      "value": null,
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "data_pagamento: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); validator:date_coherence=warning (-0.20)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=warning (-0.20)"
+        ]
+      },
+      "evidence": null
+    },
+    "data_pagamento_ausente_declarada": {
+      "value": true,
+      "confidence": null,
+      "evidence": null
+    },
+    "valor_bruto": {
+      "value": "0.2050000000",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "valor_bruto: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Valor bruto por ação ON R$ 0,2050000000",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "valor_liquido": {
+      "value": "0.1691250000",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "valor_liquido: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Valor líquido por ação ON R$ 0,1691250000",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "aliquota_ir": {
+      "value": "0.175",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "aliquota_ir: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "IRRF na fonte 17,5%",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "proporcao": {
+      "value": null,
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "proporcao: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); field_absent (cap 0.70)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "field_absent (cap 0.70)"
+        ]
+      },
+      "evidence": null
+    },
+    "moeda": {
+      "value": "BRL",
+      "confidence": {
+        "level": "high",
+        "score": 0.9,
+        "justification": "moeda: level=high, score=0.90. Signals: extraction_method=native (+0.90 base)",
+        "signals": [
+          "extraction_method=native (+0.90 base)"
+        ]
+      },
+      "evidence": {
+        "snippet": "R$ 0,2050000000",
+        "page": 1,
+        "method": "native"
+      }
+    }
+  },
+  "validation": [
+    {
+      "rule": "golden_records",
+      "status": "pass",
+      "message": "Match by isin: Rede Varejo Brasil S.A..",
+      "details": {
+        "method": "isin",
+        "score": 1.0,
+        "emissor": "Rede Varejo Brasil S.A.",
+        "isin": "BRRVBRACNOR9",
+        "ticker": "RVBR3"
+      }
+    },
+    {
+      "rule": "date_coherence",
+      "status": "warning",
+      "message": "Payment date declared absent in the document (e.g. 'sera oportunamente definida').",
+      "details": {
+        "warnings": [
+          "Payment date declared absent in the document (e.g. 'sera oportunamente definida')."
+        ]
+      }
+    },
+    {
+      "rule": "gross_net_consistency",
+      "status": "pass",
+      "message": "bruto * (1 - aliquota) ~= liquido (esperado=0.1691250000000).",
+      "details": {
+        "esperado": "0.1691250000000",
+        "diff": "0E-13"
+      }
+    },
+    {
+      "rule": "isin_checksum",
+      "status": "warning",
+      "message": "ISIN checksum invalid (BRRVBRACNOR9: digit=9, expected=7), but ISIN confirmed in golden_records reference base.",
+      "details": {
+        "isin": "BRRVBRACNOR9",
+        "expected_check_digit": "7",
+        "confirmed_in_golden_records": true
+      }
+    },
+    {
+      "rule": "type_consistency",
+      "status": "pass",
+      "message": "No title/content divergence (tipo_declarado_no_titulo=Juros sobre o Capital Próprio, tipo_evento=EventType.JCP).",
+      "details": null
+    }
+  ],
+  "routing": {
+    "decision": "auto_approve",
+    "reasons": [
+      "auto_approve with warnings: date_coherence, isin_checksum"
+    ]
+  },
+  "audit_trail": [
+    "ingest: kind=native, pages=1, mean_density=1272.00, threshold=50.0, images=0",
+    "extract_native: model=gpt-5.4-mini, fields=['emissor', 'cnpj', 'isin', 'ticker', 'tipo_evento', 'tipo_declarado_no_titulo', 'data_aprovacao', 'data_com', 'data_ex', 'valor_bruto', 'valor_liquido', 'aliquota_ir', 'moeda'], evidencias=13",
+    "classify: mode=text, model=gpt-5.4-mini, tipo_evento=jcp, divergencia=False, raciocinio=O documento descreve expressamente o pagamento de Juros sobre o Capital Próprio, com menção a JCP e retenção de IRRF de 17,5% sobre o valor bruto, que são sinais típicos desse tipo de provento. Não há indicação de bonificação ou grupamento, nem de mera distribuição de dividendos sem retenção.; evidencias=\"AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio\" | \"aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.\" | \"Tipo de evento Juros sobre o Capital Próprio (JCP)\" | \"IRRF na fonte 17,5%\"",
+    "validate: golden_records=pass, date_coherence=warning, gross_net_consistency=pass, isin_checksum=warning, type_consistency=pass",
+    "score: overall=0.857, fields=14, low=none",
+    "route: decision=auto_approve; reasons=['auto_approve with warnings: date_coherence, isin_checksum']"
+  ]
+}

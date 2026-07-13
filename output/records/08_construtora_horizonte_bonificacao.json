@@ -1,0 +1,319 @@
+{
+  "doc_id": "08_construtora_horizonte_bonificacao",
+  "processing": {
+    "timestamp": "2026-07-11T16:55:42.870214+00:00",
+    "pipeline_version": "0.1.0",
+    "source_path": "C:\\teste_tecnico\\documents\\08_construtora_horizonte_bonificacao.pdf",
+    "pdf_kind": "native",
+    "extraction_method": "native",
+    "models": {
+      "extraction": "gpt-5.4-mini",
+      "classification": "gpt-5.4-mini",
+      "vision": "gpt-5.4-mini"
+    },
+    "overall_confidence": 0.7285714285714286
+  },
+  "record": {
+    "emissor": {
+      "value": "CONSTRUTORA HORIZONTE S.A.",
+      "confidence": {
+        "level": "low",
+        "score": 0.45,
+        "justification": "emissor: level=low, score=0.45. Signals: extraction_method=native (+0.90 base); validator:golden_records=fail (-0.45)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=fail (-0.45)"
+        ]
+      },
+      "evidence": {
+        "snippet": "CONSTRUTORA HORIZONTE S.A.",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "cnpj": {
+      "value": "09.888.999/0001-21",
+      "confidence": {
+        "level": "low",
+        "score": 0.45,
+        "justification": "cnpj: level=low, score=0.45. Signals: extraction_method=native (+0.90 base); validator:golden_records=fail (-0.45)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=fail (-0.45)"
+        ]
+      },
+      "evidence": {
+        "snippet": "CNPJ/ME nº 09.888.999/0001-21",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "isin": {
+      "value": "BRCNHZACNOR5",
+      "confidence": {
+        "level": "low",
+        "score": 0.0,
+        "justification": "isin: level=low, score=0.00. Signals: extraction_method=native (+0.90 base); validator:golden_records=fail (-0.45); validator:isin_checksum=fail (-0.45)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=fail (-0.45)",
+          "validator:isin_checksum=fail (-0.45)"
+        ]
+      },
+      "evidence": {
+        "snippet": "ISIN BRCNHZACNOR5",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "ticker": {
+      "value": "CNHZ3",
+      "confidence": {
+        "level": "low",
+        "score": 0.45,
+        "justification": "ticker: level=low, score=0.45. Signals: extraction_method=native (+0.90 base); validator:golden_records=fail (-0.45)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=fail (-0.45)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Código de negociação CNHZ3",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_evento": {
+      "value": "bonificacao",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "tipo_evento: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:type_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:type_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Bonificação em Ações",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_declarado_no_titulo": {
+      "value": "Bonificação em Ações",
+      "confidence": null,
+      "evidence": {
+        "snippet": "AVISO AOS ACIONISTAS — Bonificação em Ações",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "divergencia_titulo_conteudo": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "raciocinio_classificacao": {
+      "value": "O texto descreve claramente uma capitalização de reservas com aumento de capital e emissão de ações novas aos acionistas na proporção informada. Não há वितरण de caixa nem remuneração em dinheiro; trata-se de entrega de ações gratuitas decorrente de bonificação.",
+      "confidence": null,
+      "evidence": null
+    },
+    "data_aprovacao": {
+      "value": "2026-06-04",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_aprovacao: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Assembleia Geral Extraordinária de 04 de junho de 2026 aprovou",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_com": {
+      "value": "2026-06-18",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_com: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data-base (“data com”) 18/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_ex": {
+      "value": "2026-06-19",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_ex: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data “ex-bonificação” 19/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_pagamento": {
+      "value": "2026-06-26",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_pagamento: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Crédito das ações bonificadas 26/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_pagamento_ausente_declarada": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "valor_bruto": {
+      "value": null,
+      "confidence": {
+        "level": "high",
+        "score": 0.9,
+        "justification": "valor_bruto: level=high, score=0.90. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=n/a (0)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=n/a (0)"
+        ]
+      },
+      "evidence": null
+    },
+    "valor_liquido": {
+      "value": null,
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "valor_liquido: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); field_absent (cap 0.70); validator:gross_net_consistency=n/a (0)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "field_absent (cap 0.70)",
+          "validator:gross_net_consistency=n/a (0)"
+        ]
+      },
+      "evidence": null
+    },
+    "aliquota_ir": {
+      "value": null,
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "aliquota_ir: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); field_absent (cap 0.70); validator:gross_net_consistency=n/a (0)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "field_absent (cap 0.70)",
+          "validator:gross_net_consistency=n/a (0)"
+        ]
+      },
+      "evidence": null
+    },
+    "proporcao": {
+      "value": "1:20",
+      "confidence": {
+        "level": "high",
+        "score": 0.9,
+        "justification": "proporcao: level=high, score=0.90. Signals: extraction_method=native (+0.90 base)",
+        "signals": [
+          "extraction_method=native (+0.90 base)"
+        ]
+      },
+      "evidence": {
+        "snippet": "1 (uma) ação nova para cada 20 (vinte) ações",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "moeda": {
+      "value": "BRL",
+      "confidence": {
+        "level": "high",
+        "score": 0.9,
+        "justification": "moeda: level=high, score=0.90. Signals: extraction_method=native (+0.90 base)",
+        "signals": [
+          "extraction_method=native (+0.90 base)"
+        ]
+      },
+      "evidence": {
+        "snippet": "R$ 7,820000 por ação",
+        "page": 1,
+        "method": "native"
+      }
+    }
+  },
+  "validation": [
+    {
+      "rule": "golden_records",
+      "status": "fail",
+      "message": "Issuer not found in reference base (isin=BRCNHZACNOR5, ticker=CNHZ3, cnpj=09.888.999/0001-21, emissor=CONSTRUTORA HORIZONTE S.A.).",
+      "details": null
+    },
+    {
+      "rule": "date_coherence",
+      "status": "pass",
+      "message": "Dates coherent (aprovacao <= data_com < data_ex <= pagamento).",
+      "details": null
+    },
+    {
+      "rule": "gross_net_consistency",
+      "status": "not_applicable",
+      "message": "Rule not applicable for tipo_evento=EventType.BONIFICACAO.",
+      "details": null
+    },
+    {
+      "rule": "isin_checksum",
+      "status": "fail",
+      "message": "Invalid ISIN checksum: BRCNHZACNOR5 (digit=5, expected=6).",
+      "details": {
+        "isin": "BRCNHZACNOR5",
+        "expected_check_digit": "6",
+        "confirmed_in_golden_records": false
+      }
+    },
+    {
+      "rule": "type_consistency",
+      "status": "pass",
+      "message": "No title/content divergence (tipo_declarado_no_titulo=Bonificação em Ações, tipo_evento=EventType.BONIFICACAO).",
+      "details": null
+    }
+  ],
+  "routing": {
+    "decision": "human_review",
+    "reasons": [
+      "fail golden_records: Issuer not found in reference base (isin=BRCNHZACNOR5, ticker=CNHZ3, cnpj=09.888.999/0001-21, emissor=CONSTRUTORA HORIZONTE S.A.)."
+    ]
+  },
+  "audit_trail": [
+    "ingest: kind=native, pages=1, mean_density=1261.00, threshold=50.0, images=0",
+    "extract_native: model=gpt-5.4-mini, fields=['emissor', 'cnpj', 'isin', 'ticker', 'tipo_evento', 'tipo_declarado_no_titulo', 'data_aprovacao', 'data_com', 'data_ex', 'data_pagamento', 'proporcao', 'moeda'], evidencias=12",
+    "classify: mode=text, model=gpt-5.4-mini, tipo_evento=bonificacao, divergencia=False, raciocinio=O texto descreve claramente uma capitalização de reservas com aumento de capital e emissão de ações novas aos acionistas na proporção informada. Não há वितरण de caixa nem remuneração em dinheiro; trata-se de entrega de ações gratuitas decorrente de bonificação.; evidencias=AVISO AOS ACIONISTAS — Bonificação em Ações | a Assembleia Geral Extraordinária de 04 de junho de 2026 aprovou aumento do capital social mediante capitalização de reservas, com a consequente bonificação em ações aos acionistas. | A bonificação será atribuída na proporção de 1 (uma) ação nova para cada 20 (vinte) ações | Tipo de evento Bonificação em ações",
+    "validate: golden_records=fail, date_coherence=pass, gross_net_consistency=not_applicable, isin_checksum=fail, type_consistency=pass",
+    "score: overall=0.729, fields=14, low=['emissor', 'cnpj', 'isin', 'ticker']",
+    "route: decision=human_review; reasons=['fail golden_records: Issuer not found in reference base (isin=BRCNHZACNOR5, ticker=CNHZ3, cnpj=09.888.999/0001-21, emissor=CONSTRUTORA HORIZONTE S.A.).']"
+  ]
+}

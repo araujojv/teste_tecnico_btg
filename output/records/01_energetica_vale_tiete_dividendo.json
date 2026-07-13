@@ -1,0 +1,331 @@
+{
+  "doc_id": "01_energetica_vale_tiete_dividendo",
+  "processing": {
+    "timestamp": "2026-07-11T16:55:02.822079+00:00",
+    "pipeline_version": "0.1.0",
+    "source_path": "C:\\teste_tecnico\\documents\\01_energetica_vale_tiete_dividendo.pdf",
+    "pdf_kind": "native",
+    "extraction_method": "native",
+    "models": {
+      "extraction": "gpt-5.4-mini",
+      "classification": "gpt-5.4-mini",
+      "vision": "gpt-5.4-mini"
+    },
+    "overall_confidence": 0.8464285714285714
+  },
+  "record": {
+    "emissor": {
+      "value": "ENERGÉTICA VALE DO TIETÊ S.A.",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "emissor: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "ENERGÉTICA VALE DO TIETÊ S.A.",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "cnpj": {
+      "value": "12.345.678/0001-90",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "cnpj: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "CNPJ/ME nº 12.345.678/0001-90",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "isin": {
+      "value": "BRTIETACNOR3",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "isin: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05); validator:isin_checksum=warning (golden confirmed, no penalty)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)",
+          "validator:isin_checksum=warning (golden confirmed, no penalty)"
+        ]
+      },
+      "evidence": {
+        "snippet": "(ISIN BRTIETACNOR3)",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "ticker": {
+      "value": "TIET3",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "ticker: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Código de negociação TIET3",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_evento": {
+      "value": "dividendo",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "tipo_evento: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:type_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:type_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Tipo de evento Dividendo",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_declarado_no_titulo": {
+      "value": "Pagamento de Dividendos",
+      "confidence": null,
+      "evidence": {
+        "snippet": "AVISO AOS ACIONISTAS — Pagamento de Dividendos",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "divergencia_titulo_conteudo": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "raciocinio_classificacao": {
+      "value": "O conteúdo descreve distribuição de dividendos aos acionistas sobre o resultado do exercício, com data-base, ex-dividendos e pagamento. A menção a retenção de IRRF não altera a natureza do evento para JCP, pois o texto não fala em remuneração do capital próprio, TJLP ou imputação ao dividendo obrigatório. Assim, o evento é de dividendos.",
+      "confidence": null,
+      "evidence": null
+    },
+    "data_aprovacao": {
+      "value": "2026-05-28",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_aprovacao: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "reunião realizada em 28 de maio de 2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_com": {
+      "value": "2026-06-12",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_com: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data-base (“data com”) 12/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_ex": {
+      "value": "2026-06-15",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_ex: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data “ex-dividendos” 15/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_pagamento": {
+      "value": "2026-07-03",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_pagamento: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data de pagamento 03/07/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_pagamento_ausente_declarada": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "valor_bruto": {
+      "value": "0.4275000000",
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "valor_bruto: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=warning (-0.20)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=warning (-0.20)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Valor bruto por ação ordinária R$ 0,4275000000",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "valor_liquido": {
+      "value": null,
+      "confidence": {
+        "level": "low",
+        "score": 0.49999999999999994,
+        "justification": "valor_liquido: level=low, score=0.50. Signals: extraction_method=native (+0.90 base); field_absent (cap 0.70); validator:gross_net_consistency=warning (-0.20)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "field_absent (cap 0.70)",
+          "validator:gross_net_consistency=warning (-0.20)"
+        ]
+      },
+      "evidence": null
+    },
+    "aliquota_ir": {
+      "value": null,
+      "confidence": {
+        "level": "low",
+        "score": 0.49999999999999994,
+        "justification": "aliquota_ir: level=low, score=0.50. Signals: extraction_method=native (+0.90 base); field_absent (cap 0.70); validator:gross_net_consistency=warning (-0.20)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "field_absent (cap 0.70)",
+          "validator:gross_net_consistency=warning (-0.20)"
+        ]
+      },
+      "evidence": null
+    },
+    "proporcao": {
+      "value": null,
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "proporcao: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); field_absent (cap 0.70)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "field_absent (cap 0.70)"
+        ]
+      },
+      "evidence": null
+    },
+    "moeda": {
+      "value": "BRL",
+      "confidence": {
+        "level": "high",
+        "score": 0.9,
+        "justification": "moeda: level=high, score=0.90. Signals: extraction_method=native (+0.90 base)",
+        "signals": [
+          "extraction_method=native (+0.90 base)"
+        ]
+      },
+      "evidence": {
+        "snippet": "R$ 0,4275000000",
+        "page": 1,
+        "method": "native"
+      }
+    }
+  },
+  "validation": [
+    {
+      "rule": "golden_records",
+      "status": "pass",
+      "message": "Match by isin: Energética Vale do Tietê S.A..",
+      "details": {
+        "method": "isin",
+        "score": 1.0,
+        "emissor": "Energética Vale do Tietê S.A.",
+        "isin": "BRTIETACNOR3",
+        "ticker": "TIET3"
+      }
+    },
+    {
+      "rule": "date_coherence",
+      "status": "pass",
+      "message": "Dates coherent (aprovacao <= data_com < data_ex <= pagamento).",
+      "details": null
+    },
+    {
+      "rule": "gross_net_consistency",
+      "status": "warning",
+      "message": "Missing fields for gross/net check: valor_liquido, aliquota_ir.",
+      "details": {
+        "missing_fields": [
+          "valor_liquido",
+          "aliquota_ir"
+        ]
+      }
+    },
+    {
+      "rule": "isin_checksum",
+      "status": "warning",
+      "message": "ISIN checksum invalid (BRTIETACNOR3: digit=3, expected=0), but ISIN confirmed in golden_records reference base.",
+      "details": {
+        "isin": "BRTIETACNOR3",
+        "expected_check_digit": "0",
+        "confirmed_in_golden_records": true
+      }
+    },
+    {
+      "rule": "type_consistency",
+      "status": "pass",
+      "message": "No title/content divergence (tipo_declarado_no_titulo=Pagamento de Dividendos, tipo_evento=EventType.DIVIDENDO).",
+      "details": null
+    }
+  ],
+  "routing": {
+    "decision": "auto_approve",
+    "reasons": [
+      "auto_approve with warnings: gross_net_consistency, isin_checksum"
+    ]
+  },
+  "audit_trail": [
+    "ingest: kind=native, pages=1, mean_density=1378.00, threshold=50.0, images=0",
+    "extract_native: model=gpt-5.4-mini, fields=['emissor', 'cnpj', 'isin', 'ticker', 'tipo_evento', 'tipo_declarado_no_titulo', 'data_aprovacao', 'data_com', 'data_ex', 'data_pagamento', 'valor_bruto', 'moeda'], evidencias=12",
+    "classify: mode=text, model=gpt-5.4-mini, tipo_evento=dividendo, divergencia=False, raciocinio=O conteúdo descreve distribuição de dividendos aos acionistas sobre o resultado do exercício, com data-base, ex-dividendos e pagamento. A menção a retenção de IRRF não altera a natureza do evento para JCP, pois o texto não fala em remuneração do capital próprio, TJLP ou imputação ao dividendo obrigatório. Assim, o evento é de dividendos.; evidencias=\"AVISO AOS ACIONISTAS — Pagamento de Dividendos\" | \"aprovou a distribuição de dividendos referentes ao resultado do exercício social encerrado em 31 de dezembro de 2025\" | \"Tipo de evento Dividendo\" | \"Os dividendos serão pagos\"",
+    "validate: golden_records=pass, date_coherence=pass, gross_net_consistency=warning, isin_checksum=warning, type_consistency=pass",
+    "score: overall=0.846, fields=14, low=['valor_liquido', 'aliquota_ir']",
+    "route: decision=auto_approve; reasons=['auto_approve with warnings: gross_net_consistency, isin_checksum']"
+  ]
+}

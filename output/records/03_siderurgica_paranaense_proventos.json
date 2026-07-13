@@ -1,0 +1,342 @@
+{
+  "doc_id": "03_siderurgica_paranaense_proventos",
+  "processing": {
+    "timestamp": "2026-07-11T16:55:16.968456+00:00",
+    "pipeline_version": "0.1.0",
+    "source_path": "C:\\teste_tecnico\\documents\\03_siderurgica_paranaense_proventos.pdf",
+    "pdf_kind": "native",
+    "extraction_method": "native",
+    "models": {
+      "extraction": "gpt-5.4-mini",
+      "classification": "gpt-5.4-mini",
+      "vision": "gpt-5.4-mini"
+    },
+    "overall_confidence": 0.8928571428571429
+  },
+  "record": {
+    "emissor": {
+      "value": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "emissor: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "cnpj": {
+      "value": "76.543.210/0001-12",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "cnpj: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "CNPJ/ME nº 76.543.210/0001-12",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "isin": {
+      "value": "BRCSPRACNOR1",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "isin: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05); validator:isin_checksum=warning (golden confirmed, no penalty)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)",
+          "validator:isin_checksum=warning (golden confirmed, no penalty)"
+        ]
+      },
+      "evidence": {
+        "snippet": "ISIN BRCSPRACNOR1",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "ticker": {
+      "value": "CSPR3",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "ticker: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Código de negociação CSPR3",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_evento": {
+      "value": "jcp",
+      "confidence": {
+        "level": "low",
+        "score": 0.44999999999999996,
+        "justification": "tipo_evento: level=low, score=0.45. Signals: extraction_method=native (+0.90 base); validator:type_consistency=warning (-0.20); divergencia_titulo_conteudo=true (-0.25)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:type_consistency=warning (-0.20)",
+          "divergencia_titulo_conteudo=true (-0.25)"
+        ]
+      },
+      "evidence": {
+        "snippet": "remuneração do capital próprio",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "tipo_declarado_no_titulo": {
+      "value": "dividendo",
+      "confidence": null,
+      "evidence": {
+        "snippet": "AVISO AOS ACIONISTAS — Distribuição de Dividendos",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "divergencia_titulo_conteudo": {
+      "value": true,
+      "confidence": null,
+      "evidence": null
+    },
+    "raciocinio_classificacao": {
+      "value": "O título menciona distribuição de dividendos, mas o corpo do aviso descreve expressamente remuneração do capital próprio, limitada à TJLP pro rata die, com retenção de IRRF de 17,5% e imputação ao dividendo obrigatório. Esses são sinais determinísticos de JCP, não de dividendo. Portanto, a classificação deve seguir o conteúdo do documento.",
+      "confidence": null,
+      "evidence": null
+    },
+    "data_aprovacao": {
+      "value": "2026-06-05",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_aprovacao: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "reunião de 05 de junho de 2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_com": {
+      "value": "2026-06-19",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_com: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data-base (“data com”) 19/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_ex": {
+      "value": "2026-06-22",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_ex: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data “ex” 22/06/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_pagamento": {
+      "value": "2026-09-11",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "data_pagamento: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data de pagamento 11/09/2026",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "data_pagamento_ausente_declarada": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "valor_bruto": {
+      "value": "0.0921500000",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "valor_bruto: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Valor bruto por ação ON R$ 0,0921500000",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "valor_liquido": {
+      "value": "0.0760237500",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "valor_liquido: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Valor líquido por ação ON R$ 0,0760237500",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "aliquota_ir": {
+      "value": "0.175",
+      "confidence": {
+        "level": "high",
+        "score": 0.9500000000000001,
+        "justification": "aliquota_ir: level=high, score=0.95. Signals: extraction_method=native (+0.90 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "alíquota de 17,5%",
+        "page": 1,
+        "method": "native"
+      }
+    },
+    "proporcao": {
+      "value": null,
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "proporcao: level=medium, score=0.70. Signals: extraction_method=native (+0.90 base); field_absent (cap 0.70)",
+        "signals": [
+          "extraction_method=native (+0.90 base)",
+          "field_absent (cap 0.70)"
+        ]
+      },
+      "evidence": null
+    },
+    "moeda": {
+      "value": "BRL",
+      "confidence": {
+        "level": "high",
+        "score": 0.9,
+        "justification": "moeda: level=high, score=0.90. Signals: extraction_method=native (+0.90 base)",
+        "signals": [
+          "extraction_method=native (+0.90 base)"
+        ]
+      },
+      "evidence": {
+        "snippet": "R$ 0,0921500000",
+        "page": 1,
+        "method": "native"
+      }
+    }
+  },
+  "validation": [
+    {
+      "rule": "golden_records",
+      "status": "pass",
+      "message": "Match by isin: Companhia Siderúrgica Paranaense S.A..",
+      "details": {
+        "method": "isin",
+        "score": 1.0,
+        "emissor": "Companhia Siderúrgica Paranaense S.A.",
+        "isin": "BRCSPRACNOR1",
+        "ticker": "CSPR3"
+      }
+    },
+    {
+      "rule": "date_coherence",
+      "status": "pass",
+      "message": "Dates coherent (aprovacao <= data_com < data_ex <= pagamento).",
+      "details": null
+    },
+    {
+      "rule": "gross_net_consistency",
+      "status": "pass",
+      "message": "bruto * (1 - aliquota) ~= liquido (esperado=0.0760237500000).",
+      "details": {
+        "esperado": "0.0760237500000",
+        "diff": "0E-13"
+      }
+    },
+    {
+      "rule": "isin_checksum",
+      "status": "warning",
+      "message": "ISIN checksum invalid (BRCSPRACNOR1: digit=1, expected=5), but ISIN confirmed in golden_records reference base.",
+      "details": {
+        "isin": "BRCSPRACNOR1",
+        "expected_check_digit": "5",
+        "confirmed_in_golden_records": true
+      }
+    },
+    {
+      "rule": "type_consistency",
+      "status": "warning",
+      "message": "Title/content divergence flagged by classifier. Raciocinio: O título menciona distribuição de dividendos, mas o corpo do aviso descreve expressamente remuneração do capital próprio, limitada à TJLP pro rata die, com retenção de IRRF de 17,5% e imputação ao dividendo obrigatório. Esses são sinais determinísticos de JCP, não de dividendo. Portanto, a classificação deve seguir o conteúdo do documento.",
+      "details": {
+        "rebaixar_confianca": true,
+        "tipo_declarado_no_titulo": "dividendo",
+        "tipo_evento": "jcp",
+        "divergencia_titulo_conteudo": true,
+        "raciocinio": "O título menciona distribuição de dividendos, mas o corpo do aviso descreve expressamente remuneração do capital próprio, limitada à TJLP pro rata die, com retenção de IRRF de 17,5% e imputação ao dividendo obrigatório. Esses são sinais determinísticos de JCP, não de dividendo. Portanto, a classificação deve seguir o conteúdo do documento."
+      }
+    }
+  ],
+  "routing": {
+    "decision": "human_review",
+    "reasons": [
+      "critical field 'tipo_evento' confidence=low (tipo_evento: level=low, score=0.45. Signals: extraction_method=native (+0.90 base); validator:type_consistency=warning (-0.20); divergencia_titulo_conteudo=true (-0.25))"
+    ]
+  },
+  "audit_trail": [
+    "ingest: kind=native, pages=1, mean_density=1449.00, threshold=50.0, images=0",
+    "extract_native: model=gpt-5.4-mini, fields=['emissor', 'cnpj', 'isin', 'ticker', 'tipo_evento', 'tipo_declarado_no_titulo', 'data_aprovacao', 'data_com', 'data_ex', 'data_pagamento', 'valor_bruto', 'valor_liquido', 'aliquota_ir', 'moeda'], evidencias=14",
+    "classify: mode=text, model=gpt-5.4-mini, tipo_evento=jcp, divergencia=True, raciocinio=O título menciona distribuição de dividendos, mas o corpo do aviso descreve expressamente remuneração do capital próprio, limitada à TJLP pro rata die, com retenção de IRRF de 17,5% e imputação ao dividendo obrigatório. Esses são sinais determinísticos de JCP, não de dividendo. Portanto, a classificação deve seguir o conteúdo do documento.; evidencias=\"AVISO AOS ACIONISTAS — Distribuição de Dividendos\" | \"aprovaram a distribuição de proventos a título de remuneração do capital próprio\" | \"calculados ... limitados à variação pro rata die da Taxa de Juros de Longo Prazo\" | \"retenção de Imposto de Renda na Fonte à alíquota de 17,5%\" | \"O montante será imputado ao dividendo mínimo obrigatório do exercício.\"",
+    "validate: golden_records=pass, date_coherence=pass, gross_net_consistency=pass, isin_checksum=warning, type_consistency=warning",
+    "score: overall=0.893, fields=14, low=['tipo_evento']",
+    "route: decision=human_review; reasons=[\"critical field 'tipo_evento' confidence=low (tipo_evento: level=low, score=0.45. Signals: extraction_method=native (+0.90 base); validator:type_consistency=warning (-0.20); divergencia_titulo_conteudo=true (-0.25))\"]"
+  ]
+}

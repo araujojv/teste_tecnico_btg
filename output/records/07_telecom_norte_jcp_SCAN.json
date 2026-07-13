@@ -1,0 +1,335 @@
+{
+  "doc_id": "07_telecom_norte_jcp_SCAN",
+  "processing": {
+    "timestamp": "2026-07-11T16:55:38.191156+00:00",
+    "pipeline_version": "0.1.0",
+    "source_path": "C:\\teste_tecnico\\documents\\07_telecom_norte_jcp_SCAN.pdf",
+    "pdf_kind": "scanned",
+    "extraction_method": "ocr",
+    "models": {
+      "extraction": "gpt-5.4-mini",
+      "classification": "gpt-5.4-mini",
+      "vision": "gpt-5.4-mini"
+    },
+    "overall_confidence": 0.7428571428571429
+  },
+  "record": {
+    "emissor": {
+      "value": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "emissor: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "cnpj": {
+      "value": "33.222.111/0001-44",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "cnpj: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "CNPJ/ME nº 33.222.111/0001-44",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "isin": {
+      "value": "BRTLNRACNPR2",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "isin: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:golden_records=pass (+0.05); validator:isin_checksum=warning (golden confirmed, no penalty)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:golden_records=pass (+0.05)",
+          "validator:isin_checksum=warning (golden confirmed, no penalty)"
+        ]
+      },
+      "evidence": {
+        "snippet": "ISIN BRTLNRACNPR2",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "ticker": {
+      "value": "TLNR4",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "ticker: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:golden_records=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:golden_records=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "TLNR4",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "tipo_evento": {
+      "value": "jcp",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "tipo_evento: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:type_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:type_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Juros sobre o Capital Próprio (JCP)",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "tipo_declarado_no_titulo": {
+      "value": "Juros sobre o Capital Próprio (JCP)",
+      "confidence": null,
+      "evidence": {
+        "snippet": "Juros sobre o Capital Próprio (JCP)",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "divergencia_titulo_conteudo": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "raciocinio_classificacao": {
+      "value": "O conteúdo identifica explicitamente o evento como Juros sobre o Capital Próprio, menciona art. 9º da Lei 9.249/95 e retenção de IRRF de 17,5%, sinais determinísticos de JCP. Não há indicação de distribuição de lucros comum, bonificação ou grupamento.",
+      "confidence": null,
+      "evidence": null
+    },
+    "data_aprovacao": {
+      "value": "2026-06-06",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "data_aprovacao: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "em reunião realizada em 06 de junho de 2026",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "data_com": {
+      "value": "2026-06-22",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "data_com: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data-base (data com) ........... 22/06/2026",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "data_ex": {
+      "value": "2026-06-23",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "data_ex: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data ex-JCP ................. 23/06/2026",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "data_pagamento": {
+      "value": "2026-08-21",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "data_pagamento: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:date_coherence=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:date_coherence=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "Data de pagamento ............. 21/08/2026",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "data_pagamento_ausente_declarada": {
+      "value": false,
+      "confidence": null,
+      "evidence": null
+    },
+    "valor_bruto": {
+      "value": "0.1124300000",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "valor_bruto: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "R$ 0,1124300000",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "valor_liquido": {
+      "value": "0.0927547500",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "valor_liquido: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "R$ 0,0927547500",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "aliquota_ir": {
+      "value": "0.175",
+      "confidence": {
+        "level": "medium",
+        "score": 0.75,
+        "justification": "aliquota_ir: level=medium, score=0.75. Signals: extraction_method=ocr (+0.70 base); validator:gross_net_consistency=pass (+0.05)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "validator:gross_net_consistency=pass (+0.05)"
+        ]
+      },
+      "evidence": {
+        "snippet": "IRRF à alíquota de 17,5%",
+        "page": 1,
+        "method": "ocr"
+      }
+    },
+    "proporcao": {
+      "value": null,
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "proporcao: level=medium, score=0.70. Signals: extraction_method=ocr (+0.70 base); field_absent (cap 0.70)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)",
+          "field_absent (cap 0.70)"
+        ]
+      },
+      "evidence": null
+    },
+    "moeda": {
+      "value": "BRL",
+      "confidence": {
+        "level": "medium",
+        "score": 0.7,
+        "justification": "moeda: level=medium, score=0.70. Signals: extraction_method=ocr (+0.70 base)",
+        "signals": [
+          "extraction_method=ocr (+0.70 base)"
+        ]
+      },
+      "evidence": {
+        "snippet": "R$",
+        "page": 1,
+        "method": "ocr"
+      }
+    }
+  },
+  "validation": [
+    {
+      "rule": "golden_records",
+      "status": "pass",
+      "message": "Match by isin: Telecom Norte Participações S.A..",
+      "details": {
+        "method": "isin",
+        "score": 1.0,
+        "emissor": "Telecom Norte Participações S.A.",
+        "isin": "BRTLNRACNPR2",
+        "ticker": "TLNR4"
+      }
+    },
+    {
+      "rule": "date_coherence",
+      "status": "pass",
+      "message": "Dates coherent (aprovacao <= data_com < data_ex <= pagamento).",
+      "details": null
+    },
+    {
+      "rule": "gross_net_consistency",
+      "status": "pass",
+      "message": "bruto * (1 - aliquota) ~= liquido (esperado=0.0927547500000).",
+      "details": {
+        "esperado": "0.0927547500000",
+        "diff": "0E-13"
+      }
+    },
+    {
+      "rule": "isin_checksum",
+      "status": "warning",
+      "message": "ISIN checksum invalid (BRTLNRACNPR2: digit=2, expected=6), but ISIN confirmed in golden_records reference base.",
+      "details": {
+        "isin": "BRTLNRACNPR2",
+        "expected_check_digit": "6",
+        "confirmed_in_golden_records": true
+      }
+    },
+    {
+      "rule": "type_consistency",
+      "status": "pass",
+      "message": "No title/content divergence (tipo_declarado_no_titulo=Juros sobre o Capital Próprio (JCP), tipo_evento=EventType.JCP).",
+      "details": null
+    }
+  ],
+  "routing": {
+    "decision": "human_review",
+    "reasons": [
+      "OCR/scanned document with overall_confidence=0.743 < 0.85"
+    ]
+  },
+  "audit_trail": [
+    "ingest: kind=scanned, pages=1, mean_density=0.00, threshold=50.0, images=1",
+    "extract_ocr: model=gpt-5.4-mini, pages=1, fields=['emissor', 'cnpj', 'isin', 'ticker', 'tipo_evento', 'tipo_declarado_no_titulo', 'data_aprovacao', 'data_com', 'data_ex', 'data_pagamento', 'valor_bruto', 'valor_liquido', 'aliquota_ir', 'moeda'], evidencias=14",
+    "classify: mode=vision, model=gpt-5.4-mini, tipo_evento=jcp, divergencia=False, raciocinio=O conteúdo identifica explicitamente o evento como Juros sobre o Capital Próprio, menciona art. 9º da Lei 9.249/95 e retenção de IRRF de 17,5%, sinais determinísticos de JCP. Não há indicação de distribuição de lucros comum, bonificação ou grupamento.; evidencias=\"AVISO AOS ACIONISTAS\" | \"Juros sobre o Capital Próprio (JCP)\" | \"aprovou o crédito de Juros sobre o Capital Próprio (JCP), nos termos do art. 9º da Lei nº 9.249/95, com retenção de Imposto de Renda na Fonte (IRRF) à alíquota de 17,5% sobre o valor bruto.\" | \"Tipo de evento ............... Juros sobre o Capital Próprio (JCP)\" | \"IRRF na fonte ............... 17,5%\"",
+    "validate: golden_records=pass, date_coherence=pass, gross_net_consistency=pass, isin_checksum=warning, type_consistency=pass",
+    "score: overall=0.743, fields=14, low=none",
+    "route: decision=human_review; reasons=['OCR/scanned document with overall_confidence=0.743 < 0.85']"
+  ]
+}
